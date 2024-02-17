@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website With Dynamic Images</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="hero">
+      <div class="navbar">
+        <img src="./Images/logo.png" class="logo" draggable="false" />
+        <div class="user">
+          <button type="button">Explore</button>
+          <img src="./Images/user.jpg" class="user-img" draggable="false" />
+        </div>
+      </div>
+      <div class="container">
+        <div class="info">
+          <h1>Discover</h1>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br />
+            Modi illo necessitatibus distinctio voluptatum quidem iure<br />
+            nam dolorem vitae quasi eaque quo sint
+          </p>
+          <input type="text" placeholder="Search" />
+        </div>
+      </div>
+
+      <div class="slider">
+        <img src="./Images/arrows.png" id="left" />
+        <div class="preview">
+          <img src="./Images/1.jpg" class="active thumbnail" />
+          <img src="./Images/2.jpg" class="thumbnail" />
+          <img src="./Images/3.jpg" class="thumbnail" />
+          <img src="./Images/4.png" class="thumbnail" />
+          <img src="./Images/5.png" class="thumbnail" />
+          <img src="./Images/6.jpg" class="thumbnail" />
+          <img src="./Images/7.png" class="thumbnail" />
+          <img src="./Images/8.webp" class="thumbnail" />
+          <img src="./Images/9.jpg" class="thumbnail" />
+          <img src="./Images/10.png" class="thumbnail" />
+          <img src="./Images/11.jpg" class="thumbnail" />
+        </div>
+        <img src="./Images/arrows.png" id="right" />
+      </div>
+    </div>
+
+    <script>
+      var prev = document.querySelector("#left");
+      var next = document.querySelector("#right");
+      var thumbnail = document.querySelectorAll(".thumbnail");
+      var hero = document.getElementById("hero");
+
+      var backgroundImg = new Array(
+        "./Images/1.jpg",
+        "./Images/2.jpg",
+        "./Images/3.jpg",
+        "./Images/4.png",
+        "./Images/5.png",
+        "./Images/6.jpg",
+        "./Images/7.png",
+        "./Images/8.webp",
+        "./Images/9.jpg",
+        "./Images/10.png",
+        "./Images/11.jpg"
+      );
+      let i = 0;
+      next.onclick = function () {
+        if (i < 10) {
+          hero.style.backgroundImage = 'url("' + backgroundImg[i + 1] + '")';
+          thumbnail[i + 1].classList.add("active");
+          thumbnail[i].classList.remove("active");
+          i++;
+        }
+      };
+
+      prev.onclick = function () {
+        if (i > 0) {
+          hero.style.backgroundImage = 'url("' + backgroundImg[i - 1] + '")';
+          thumbnail[i - 1].classList.add("active");
+          thumbnail[i].classList.remove("active");
+          i--;
+        }
+      };
+    </script>
+  </body>
+</html>
